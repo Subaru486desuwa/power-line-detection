@@ -13,7 +13,13 @@ from PySide6.QtWidgets import (
 )
 
 from resources import CLASS_COLORS, CLASS_NAMES_CN
-from detector import Detector
+# 自动选择推理后端：RKNN (RK3588) 或 PyTorch (PC)
+try:
+    from detector_rknn import DetectorRKNN as Detector
+    _BACKEND = "rknn"
+except ImportError:
+    from detector import Detector
+    _BACKEND = "pytorch"
 
 
 # ─────────────────── 工具函数 ───────────────────
@@ -234,7 +240,7 @@ class MainWindow(QMainWindow):
             "font-family: 'Microsoft YaHei'; padding: 2px 8px; }"
         )
         device = self._detector.device_name
-        sb.showMessage(f"GPU: {device}  |  模型: YOLOv5s  |  FPS: --")
+        sb.showMessage(f"GPU: {device}  |  模型: YOLOv5s ({_BACKEND})  |  FPS: --")
         self._statusbar = sb
         self.setStatusBar(sb)
 
@@ -323,7 +329,7 @@ class MainWindow(QMainWindow):
         fps = 1000 / ms if ms > 0 else 0
         device = self._detector.device_name
         self._statusbar.showMessage(
-            f"GPU: {device}  |  模型: YOLOv5s  |  FPS: {fps:.0f}"
+            f"GPU: {device}  |  模型: YOLOv5s ({_BACKEND})  |  FPS: {fps:.0f}"
         )
 
     def closeEvent(self, event):

@@ -1,0 +1,6 @@
+# RK3588 板端
+rknn-toolkit-lite2
+opencv-python
+numpy
+Pillow
+PySide6

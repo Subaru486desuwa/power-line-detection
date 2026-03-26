@@ -1,0 +1,6 @@
+# PC 端 (PyTorch + PySide6 演示)
+torch>=2.0
+opencv-python
+numpy
+Pillow
+PySide6
