@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+
+# YOLOv5 repos (clone separately)
+yolov5/
+yolov5_rk/
+
+# Calibration images
+deploy_rk3588/calibration/
+
+# Training runs - ignore everything except best.pt and best.onnx
+runs/power_line/weights/last.pt
+runs/power_line/weights/best.onnx.data
+runs/power_line/weights/events.*

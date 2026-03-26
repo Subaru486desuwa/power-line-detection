@@ -1,0 +1,6 @@
+path: /home/subaru486/datasets/power_line_foreign_object
+train: images/train
+val: images/val
+
+nc: 4
+names: ['balloon', 'kite', 'nest', 'trash']
